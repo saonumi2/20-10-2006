@@ -1,0 +1,14 @@
+{
+  "name": "nttl",
+  "version": "1.0.0",
+  "description": "Interactive 20/10 gift, GLB turntable and photo memories",
+  "private": true,
+  "scripts": {
+    "start": "node server.cjs",
+    "check": "node --check app.js && node --check character.js && node --check anh-ruong/config.js && node --check server.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}

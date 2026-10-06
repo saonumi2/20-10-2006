@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="application-name" content="NTTL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf5ef">
+  <meta name="description" content="Một hộp quà nhỏ và những lời chúc vui vẻ dành tặng bạn bè ngày 20/10.">
+  <title>Một món quà dành cho cậu · 20/10</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E🎁%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="../assets/fonts/Lora-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="../assets/fonts/Lora-Italic.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="../assets/fonts/BeVietnamPro-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <script type="importmap">{"imports":{"three":"../assets/vendor/three.module.js"}}</script>
+  <script type="module" src="../app.js"></script>
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-label="Trang đầu">Dear you<span>✿</span></a>
+    <span class="date">20 / 10 <span>— một ngày thật xinh</span></span>
+    <button class="sound-button" id="soundButton" type="button" aria-pressed="false" aria-label="Bật nhạc nền"><span id="soundIcon">♫</span><span id="soundLabel">Bật nhạc</span></button>
+  </header>
+
+  <main>
+    <section class="intro" id="intro" aria-labelledby="introTitle">
+      <p class="eyebrow"><span></span> CÓ MỘT MÓN QUÀ ĐANG CHỜ CẬU <span></span></p>
+      <h1 id="introTitle">Một điều nhỏ xíu,<br><em>dành tặng cậu.</em></h1>
+      <p class="intro-description">Có một lời chúc nhỏ được gói thật cẩn thận.<br>Chạm vào hộp quà để mở điều bất ngờ nhé.</p>
+      <div class="gift-scene" id="giftScene">
+        <span class="gift-spark spark-one" aria-hidden="true">✧</span>
+        <span class="gift-spark spark-two" aria-hidden="true">✧</span>
+        <span class="gift-heart" aria-hidden="true">✿</span>
+        <button id="giftButton" class="gift-button" type="button" aria-label="Mở hộp quà dành cho cậu">
+          <span class="gift-glow" aria-hidden="true"></span>
+          <span class="gift-box" aria-hidden="true"><span class="gift-ribbon"></span><span class="gift-label">20/10 ✿</span></span>
+          <span class="gift-lid" aria-hidden="true"><span class="bow bow-left"></span><span class="bow bow-right"></span><span class="bow-knot"></span></span>
+        </button>
+        <span class="gift-shadow" aria-hidden="true"></span>
+      </div>
+      <p class="open-hint">Nhấn để mở quà <span>↗</span></p>
+      <p class="little-note">một chút bất ngờ cho ngày 20/10</p>
+    </section>
+
+    <section class="celebration" id="celebration" aria-labelledby="greetingTitle" hidden>
+      <p class="eyebrow"><span></span> NHÂN VẬT CHÍNH CỦA NGÀY HÔM NAY <span></span></p>
+      <h1 id="greetingTitle" tabindex="-1">Chúc mừng <em>20/10!</em></h1>
+      <p class="recipient" id="recipient"></p>
+      <div class="portrait-area">
+        <span class="portrait-orbit" aria-hidden="true"></span>
+        <span class="floating-note left-note" aria-hidden="true">luôn rạng rỡ <span>✧</span></span>
+        <span class="floating-note right-note" aria-hidden="true">luôn thật vui vẻ <span>✿</span></span>
+        <div id="characterStage" class="character-stage" role="group" aria-label="Nhân vật 3D tự xoay. Kéo để xoay theo tay, thả ra để tiếp tục tự xoay."></div>
+        <p id="renderNotice" class="render-notice" hidden></p>
+      </div>
+      <p class="drag-hint">↔ Kéo để ngắm 360° · Thả tay để tự xoay</p>
+      <article class="wish-card">
+        <span class="wish-decoration" aria-hidden="true">❀</span>
+        <p id="mainWish"></p>
+        <span class="signature" id="signature"></span>
+      </article>
+      <section class="memory-section" aria-labelledby="memoryHeading">
+        <div class="memory-header">
+          <span class="tiny-heart" aria-hidden="true">✿</span>
+          <h2 id="memoryHeading">Nhặt một chút niềm vui</h2>
+          <p class="memory-instruction">Chạm vào icon đang rơi.</p>
+        </div>
+        <div class="memory-strip" id="memoryStrip" aria-label="Những tấm ảnh đã mở" hidden></div>
+      </section>
+      <div class="replay-area"><button type="button" id="replayButton" class="text-button">Gói quà lại, mở thêm lần nữa <span aria-hidden="true">↗</span></button></div>
+    </section>
+  </main>
+
+  <div id="fallingLayer" class="falling-layer" aria-label="Icon rơi để mở ảnh"></div>
+  <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+  <div id="status" class="sr-only" role="status" aria-live="polite"></div>
+  <dialog id="memoryDialog" class="memory-dialog" aria-labelledby="memoryTitle">
+    <button id="closeDialog" class="dialog-close" type="button" aria-label="Đóng ảnh">×</button>
+    <span class="dialog-eyebrow">MỘT TẤM ẢNH, MỘT LỜI CHÚC</span>
+    <h2 id="memoryTitle">Một lời chúc dành cho cậu</h2>
+    <div class="photo-frame"><img id="memoryImage" alt=""><span id="photoNumber"></span></div>
+    <p id="memoryText"></p>
+    <span class="dialog-heart" aria-hidden="true">✿</span>
+  </dialog>
+  <audio id="music" src="assets/a.mp3" loop preload="none"></audio>
+  <noscript><p class="noscript">Hãy bật JavaScript để mở hộp quà và xem nhân vật 3D nhé.</p></noscript>
+</body>
+</html>
